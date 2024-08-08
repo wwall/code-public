@@ -1,0 +1,26 @@
+﻿<xs:schema xmlns:tns="http://пример1" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://пример1" attributeFormDefault="unqualified" elementFormDefault="qualified">
+	<xs:simpleType name="age">
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="16"/>
+			<xs:maxInclusive value="35"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="man_type">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="age" type="tns:age"/>
+			<xs:element name="sex" type="tns:sex"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="many">
+		<xs:sequence>
+			<xs:element name="one" type="tns:man_type" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="sex">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="man"/>
+			<xs:enumeration value="woman"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
